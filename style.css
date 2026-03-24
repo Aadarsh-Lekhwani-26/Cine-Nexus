@@ -47,7 +47,7 @@ select{
 /* Movie Grid */
 #movieContainer{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
     padding: 20px;
 
@@ -55,3 +55,62 @@ select{
 }
 
 /* Movie Card */
+
+.movie-card {
+    background-color: #020617;
+    border-radius:  10px;
+    overflow: hidden;
+    transition: 0.3s ease ;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px #7c3aed;
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background-color: #020617;
+    border-radius: 8px;
+}
+
+.movie-info {
+    padding: 10px;
+}
+
+.movie-info h3{
+    font-size: 14px;
+    margin: 8px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+.movie-info h3:hover{
+    /* text-decoration: underline; */
+    border-bottom: 2px solid #7c3aed;
+}
+
+.movie-info p{
+    font-size: 12px;
+}
+
+
+/* loadMore button */
+#loadMore{
+    display: block;
+    margin: 30px auto;
+    padding: 12px 20px;
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+#loadMore:hover{
+    background-color: #6d28d9;
+}
