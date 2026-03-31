@@ -99,6 +99,13 @@ select{
 .movie-info p{
     font-size: 12px;
 }
+/* 31 march */
+.movie-overview{
+    display: none;
+    padding: 10px;
+    font-size: 13px;
+    color: #cbd5e1
+}
 
 /* watchlist layout*/
 

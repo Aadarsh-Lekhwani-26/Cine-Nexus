@@ -88,6 +88,11 @@ function displayMovies(movies){
         Add to Watchlist
       </button>
     </div>
+
+    <div class="movie-overview">
+      <h3>${movie.title}</h3>
+      ${movie.overview || "No description available."}
+    </div> 
       `;
     
     movieContainer.appendChild(movieCard)
@@ -100,8 +105,10 @@ function displayMovies(movies){
     if (favorites.includes(movie.id)){
       heart.classList.add("active");
     }
+    // 31 march i added stopPropagation in both heart and watchlist even listener, so that when button is clickd , card dont flip.
+    heart.addEventListener("click", (e)=>{
+      e.stopPropagation();
 
-    heart.addEventListener("click", ()=>{
       heart.classList.toggle("active");
 
       if (favorites.includes(movie.id)){
@@ -112,7 +119,7 @@ function displayMovies(movies){
 
       localStorage.setItem("favorites",JSON.stringify(favorites));
     })
-// watchlist button js
+    // watchlist button js
     const watchBtn = movieCard.querySelector(".watchlist-btn");
 
     // check if already added
@@ -121,8 +128,8 @@ function displayMovies(movies){
       watchBtn.classList.add("added");
     }
 
-    watchBtn.addEventListener("click",()=>{
-      
+    watchBtn.addEventListener("click",(e)=>{
+      e.stopPropagation();
 
       const exists = watchlist.some(item=>item.id === movie.id);
 
@@ -140,6 +147,20 @@ function displayMovies(movies){
       }
     });
 
+    // flip card feature. showing context of movie. 31 march.
+    const overview = movieCard.querySelector(".movie-overview");
+    const poster = movieCard.querySelector(".movie-poster");
+    const info = movieCard.querySelector(".movie-info");
+
+    movieCard.addEventListener("click", () => {
+
+    const isHidden = overview.style.display === "block";
+
+    overview.style.display = isHidden ? "none" : "block";
+    poster.style.display = isHidden ? "block" : "none";
+    info.style.display = isHidden ? "block" : "none";
+
+    });
   });
 }
 
