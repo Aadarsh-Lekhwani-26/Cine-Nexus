@@ -4,6 +4,20 @@ const BASE_URL = "https://api.themoviedb.org/3"
 
 const movieContainer = document.getElementById("movieContainer");
 
+const genreMap = {
+  28: "Action",
+  12: "Adventure",
+  16: "Animation",
+  35: "Comedy",
+  80: "Crime",
+  18: "Drama",
+  14: "Fantasy",
+  27: "Horror",
+  10749: "Romance",
+  878: "Sci-Fi",
+  53: "Thriller"
+};
+
 let currentPage = 1;
 let movies =[];
 // for favorites
@@ -75,6 +89,11 @@ function displayMovies(movies){
     const movieCard = document.createElement("div");
     movieCard.classList.add("movie-card");
 
+    const genres = movie.genre_ids
+    .slice(0, 2)
+    .map(id => genreMap[id])
+    .join(", ");
+
     movieCard.innerHTML = `
     <div class="movie-poster">
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
@@ -83,7 +102,7 @@ function displayMovies(movies){
 
     <div class="movie-info">
       <h3>${movie.title}</h3>
-      <p>⭐ ${movie.vote_average}</p>
+      <p>⭐ ${movie.vote_average} | ${genres}</p>
       <button class="watchlist-btn" data-id="${movie.id}" data-title="${movie.title}">
         Add to Watchlist
       </button>
@@ -133,18 +152,25 @@ function displayMovies(movies){
 
       const exists = watchlist.some(item=>item.id === movie.id);
 
-      if (!exists){
+      if (exists){
+        // remove
+        watchlist = watchlist.filter(item => item.id !== movie.id);
+        watchBtn.textContent = "Add to Watchlist";
+        watchBtn.classList.remove("added");
+      } else{
         const movieData = {
         id: movie.id,
         title: movie.title
       };
 
         watchlist.push(movieData);
-        renderWatchlist();
+        // renderWatchlist();
 
-        watchBtn.textContent = "✓ Added";
+        // watchBtn.textContent = "✓ Added";
+        watchBtn.textContent = "Remove";
         watchBtn.classList.add("added");
       }
+      renderWatchlist();
     });
 
     // flip card feature. showing context of movie. 31 march.
