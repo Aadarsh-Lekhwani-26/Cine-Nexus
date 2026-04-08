@@ -28,7 +28,7 @@ const searchInput = document.getElementById("searchInput");
 const genreFilter = document.getElementById("genreFilter");
 const languageFilter = document.getElementById("languageFilter");
 const typeFilter = document.getElementById("typeFilter");
-const sortFilter = document.getElementById("sortFilter");
+const sortFilter = document.getElementById("sortOption");
 
 
 
@@ -392,3 +392,23 @@ sortFilter.addEventListener("change", () => {
   displayMovies(movies);
 
 });
+
+
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+    themeToggle.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme","dark");
+    themeToggle.textContent = "🌙";
+  }
+});
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+  themeToggle.textContent = "☀️";
+}

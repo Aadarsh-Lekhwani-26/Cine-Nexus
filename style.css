@@ -1,8 +1,33 @@
+:root{
+  --bg-color: #0f172a;
+  --card-bg: #020617;
+  --text-color: #ffffff;
+  --secondary-text: #94a3b8;
+  --accent: #7c3aed;
+  --border-color: #1e293b;
+  --card-shadow: none;
+}
+
+.light-mode{
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-color: #020617;
+  --secondary-text: #475569;
+  --accent: #7c3aed;
+  --border-color: #e2e8f0;
+  --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.04);
+}
+
+
+
+
+
+
 body{
     margin: 0;
     font-family: Ariel, sans-serif;
-    background-color: #0f172a;;
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     overflow-x: hidden;
 }
 
@@ -11,8 +36,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #020617;
-    border-bottom: 1px solid #1e293b;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
 
 }
 
@@ -25,10 +50,10 @@ input{
     padding: 8px;
     width: 250px;
     border-radius: 6px;
-    border: none;
+    border: 1px solid var(--border-color);
     outline: none;
-    background-color: #1e293b;
-    color: white;
+    background-color: var(--card-bg);
+    color: var(--text-color);
 }
 
 .filters{
@@ -40,9 +65,9 @@ input{
 select{
     padding: 8px;
     border-radius: 6px;
-    background-color: #1e293b;
-    color: white;
-    border: none;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 /* Movie Grid */
@@ -62,11 +87,13 @@ select{
 /* Movie Card */
 
 .movie-card {
-    background-color: #020617;
+    background-color: var(--card-bg);
     border-radius:  10px;
     overflow: hidden;
     transition: 0.3s ease ;
     cursor: pointer;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
     /* width: 100%;
     max-width: 220px; */
 }
@@ -80,7 +107,7 @@ select{
     width: 100%;
     height: auto;
     object-fit: contain;
-    background-color: #020617;
+    background-color: var(--card-bg);
     border-radius: 8px;
 }
 
@@ -108,7 +135,7 @@ select{
     display: none;
     padding: 10px;
     font-size: 13px;
-    color: #cbd5e1
+    color: var(--secondary-text);
 }
 
 /* watchlist layout*/
@@ -127,7 +154,7 @@ select{
  }
 #watchlist{
     
-    background: #020617;
+    background: var(--card-bg);
     padding: 15px;
     border-radius: 10px;
 
@@ -291,3 +318,36 @@ select{
 }
 
 
+
+body, header, .movie-card, input, select {
+  transition: 0.3s ease;
+}
+/* .light-mode {
+  background-color: #f8fafc;
+  color: #020617;
+}
+
+.light-mode header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.light-mode .movie-card {
+  background-color: #ffffff;
+  color: #020617;
+}
+
+.light-mode input {
+  background-color: #e2e8f0;
+  color: #020617;
+}
+
+.light-mode select {
+  background-color: #e2e8f0;
+  color: #020617;
+}
+
+.light-mode #watchlist {
+  background-color: #ffffff;
+  color: #020617;
+} */
