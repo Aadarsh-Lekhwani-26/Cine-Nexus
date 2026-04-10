@@ -123,6 +123,10 @@ function displayMovies(movies){
     .map(id => genreMap[id])
     .join(", ");
 
+
+    const year = (movie.release_date || movie.first_air_date || "").slice(0,4);
+
+
     movieCard.innerHTML = `
     <div class="movie-poster">
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}">
@@ -130,7 +134,9 @@ function displayMovies(movies){
     </div>
 
     <div class="movie-info">
-      <h3>${movie.title || movie.name}</h3>
+      <h3>${movie.title || movie.name}
+      ${year ? `(${year})` : ""}
+      </h3>
       <p>⭐ ${movie.vote_average} | ${genres}</p>
       <button class="watchlist-btn" data-id="${movie.id}" data-title="${movie.title}">
         Add to Watchlist
@@ -401,10 +407,10 @@ themeToggle.addEventListener("click", () => {
 
   if(document.body.classList.contains("light-mode")){
     localStorage.setItem("theme","light");
-    themeToggle.textContent = "☀️";
+    themeToggle.textContent = "🌙";
   } else {
     localStorage.setItem("theme","dark");
-    themeToggle.textContent = "🌙";
+    themeToggle.textContent = "☀️";
   }
 });
 

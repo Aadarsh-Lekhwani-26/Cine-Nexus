@@ -207,7 +207,21 @@ select{
 }
 
 
+/* theme button */
 
+#themeToggle{
+    margin-top: 8px;
+    padding: 6px 10px;
+    border: none;
+    background: #7c3aed;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+#themeToggle:hover{
+    background: #6d28d9;
+}
 /* watchlist button style */
 .watchlist-btn{
     margin-top: 8px;
